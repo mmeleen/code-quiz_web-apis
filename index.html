@@ -16,13 +16,31 @@
     </ul>
   </nav>
   <main class="jumbotron my-3 w-75 mx-auto">
-    <h1 class="display-3" id="heading">Welcome to the coding quiz!</h1>
-    <p class="lead" id="#main-text">Answer the following multiple-choice questions before time runs out! You'll receive a time penalty for each incorrect answer and will be scored based on how much time remains when you complete the quiz. Good luck!</p>
-    <hr class="my-4">
-    <p></p>
+    <div id="start-text">
+      <h1 class="display-4 mb-4" id="heading">Welcome to the coding quiz!</h1>
+      <p class="lead" id="intro-text">Answer the following multiple-choice questions before time runs out! You'll receive a time penalty for each incorrect answer and will be scored based on how much time remains when you complete the quiz. Good luck!</p>
+    </div>
+    <div id="game-text" class="d-none">
+      <h1 class="display-4 mb-4" id="timeLine">Time: <span id="timer" class="text-warning">--</span> s</h1>
+      <p class="lead" id="question-text">Test</p>
+    </div>
+    <div id="end-text" class="d-none">
+      <h1 class="display-4 mb-4" id="gameOver">All done!</h1>
+      <p class="lead" id="end-text">Your final score is <span id="score-span" class="text-warning">--</span></p>
+    </div>
+    <hr class="my-4 bg-success">
+    <ul class="list-group" id="answer-choices">
+      <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+        Cras justo odio
+        <span class="badge badge-primary badge-pill">14</span>
+      </li> -->
+    </ul>
     <p class="lead">
       <a class="btn btn-primary btn-lg" id="start" role="button">Start Quiz</a>
     </p>
+    <h3 id="correct-badge"><span class="badge badge-success d-none">Correct!</span></h3>
+    <h3 id="wrong-badge"><span class="badge badge-danger d-none">WRONG! -10s</span></h3>
+
   </main>
 
 
