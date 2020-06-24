@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coding Quiz</title>
+  <title>Quiz Scores</title>
   <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-Bo21yfmmZuXwcN/9vKrA5jPUMhr7znVBBeLxT9MA4r2BchhusfJ6+n8TLGUcRAtL" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -16,14 +16,10 @@
     </ul>
   </nav>
   <main class="jumbotron my-3 w-75 mx-auto">
-    <h1 class="display-3" id="heading">Welcome to the coding quiz!</h1>
-    <p class="lead" id="#main-text">Answer the following multiple-choice questions before time runs out! You'll receive a time penalty for each incorrect answer and will be scored based on how much time remains when you complete the quiz. Good luck!</p>
-    <hr class="my-4">
-    <p></p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" id="start" role="button">Start Quiz</a>
-    </p>
+    <div id="highscore-container">
+    </div>
   </main>
+  
 
 
     <script src="./questions.js"></script>
