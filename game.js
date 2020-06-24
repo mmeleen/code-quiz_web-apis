@@ -19,8 +19,9 @@ function startQuiz() {
 	// start timer function (need to make this)
   // set text content of timer on DOM
 	// call getQuestion function
-	//startTextDiv.classList.add("d-none");
-	//gameTextDiv.classList.remove("d-none");
+	startTextDiv.classList.add("d-none");
+	gameTextDiv.classList.remove("d-none");
+	startBtn.classList.add("d-none");
 	startTimer();
 	getQuestion();
 }
@@ -102,15 +103,28 @@ function checkAnswer() {
 }
 
 function correctPopUp(){
-
+	correctBadge.classList.remove("d-none");
+	var fade = setTimeout(function(){
+		correctBadge.classList.add("d-none");
+	}, 750);
 }
 
 function wrongPopUp(){
-
+	wrongBadge.classList.remove("d-none");
+	var fade = setTimeout(function(){
+		wrongBadge.classList.add("d-none");
+	}, 750);
 }
 
 function endQuiz() {
-	console.log("endQuiz");
+	finalScore = timeLeft;
+	if (finalScore < 0) {
+		finalScore = 0;
+	}
+	scoreSpan.textContent = finalScore;
+	gameTextDiv.classList.add("d-none");
+	endTextDiv.classList.remove("d-none");
+	answerList.classList.add("d-none");
 }
 
 startBtn.addEventListener("click", startQuiz);
