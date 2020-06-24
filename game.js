@@ -14,6 +14,7 @@ var wrongBadge = document.getElementById("wrong-badge");
 var timeLeft = 30;
 var finalScore = 0;
 var questionIndex = 0;
+var interval;
 
 function startQuiz() {
 	// start timer function (need to make this)
@@ -28,13 +29,12 @@ function startQuiz() {
 
 function startTimer() {
 
-  var interval = setInterval(function() {
+  interval = setInterval(function() {
 		timeLeft--;
 		timerSpan.textContent = timeLeft;
 
-    if (timeLeft <= 0) {
-      endQuiz();
-      clearInterval(interval);
+    if (timeLeft === 0) {
+			endQuiz();
 		}
   }, 1000);
 
@@ -117,9 +117,11 @@ function wrongPopUp(){
 }
 
 function endQuiz() {
-	finalScore = timeLeft;
-	if (finalScore < 0) {
+	clearInterval(interval);
+	if (timeLeft < 0) {
 		finalScore = 0;
+	} else {
+		finalScore = timeLeft;
 	}
 	scoreSpan.textContent = finalScore;
 	gameTextDiv.classList.add("d-none");
