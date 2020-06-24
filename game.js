@@ -9,6 +9,9 @@ var scoreSpan = document.getElementById("score-span");
 var correctBadge = document.getElementById("correct-badge");
 var wrongBadge = document.getElementById("wrong-badge");
 var submitForm = document.getElementById("score-submit");
+var submitBtn = document.getElementById("submit");
+var initialsInput = document.getElementById("initials");
+
 
 // console.log(startBtn, timerSpan, startTextDiv, gameTextDiv, endTextDiv, questionEl, answerList, scoreSpan, correctBadge, wrongBadge);
 
@@ -16,6 +19,7 @@ var timeLeft = 60;
 var finalScore = 0;
 var questionIndex = 0;
 var interval;
+var highScores = [];
 
 function startQuiz() {
 	// start timer function (need to make this)
@@ -133,3 +137,16 @@ function endQuiz() {
 
 startBtn.addEventListener("click", startQuiz);
 answerList.addEventListener("click", checkAnswer);
+
+submitBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+  
+  // create user object from submission
+  var user = {
+    initials: initialsInput.value.trim(),
+    score: finalScore
+  };
+
+	console.log(user);
+	
+});
