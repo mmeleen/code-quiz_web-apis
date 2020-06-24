@@ -18,11 +18,11 @@
   <main class="jumbotron my-2 w-75 mx-auto">
     <div id="start-text">
       <h1 class="display-4 mb-3" id="heading">Coding Quiz Time!</h1>
-      <p class="lead" id="intro-text">Answer the following questions before time runs out! You'll receive a time penalty for each incorrect answer. Good luck!</p>
+      <p class="lead" id="intro-text">Answer the following questions before time runs out.  You'll receive a time penalty for each incorrect answer.  Good luck!</p>
     </div>
     <div id="game-text" class="d-none">
-      <h1 class="display-4 mb-3" id="timeLine">Time: <span id="timer" class="text-warning">30</span> s</h1>
-      <p class="lead" id="question-text">Test</p>
+      <h1 class="display-4 mb-3" id="timeLine">Time: <span id="timer" class="text-warning">60</span> s</h1>
+      <p class="lead" id="question-text"></p>
     </div>
     <div id="end-text" class="d-none">
       <h1 class="display-4 mb-3" id="gameOver">All done!</h1>
@@ -35,21 +35,17 @@
     </p>
     <h3 id="correct-badge" class="d-none"><span class="badge badge-success">Correct!</span></h3>
     <h3 id="wrong-badge" class="d-none"><span class="badge badge-danger">WRONG! -10s</span></h3>
-
+    <form id="score-submit" class="d-none form-inline">
+      <div class="form-row mr-2 my-3">
+        <label for="initials" class="col-form-label">Enter initials: </label>
+        <input type="text" class="form-control" id="initials" placeholder="M&M">
+        <button href="highScore.html" id="submit" type="button" class="btn btn-warning mb-2">Submit</button>
+      </div>
+    </form>
   </main>
-
 
     <script src="./questions.js"></script>
     <script src="./game.js"></script>
     <script src="./score.js"></script>
 </body>
 </html>
-
-<!-- Need:
-- a start button
-- a timer span
-- a place to append the current question
-- a place to append answer choices
-- a click handler for the start button
-- a setInterval when the start button is clicked
-- the first question and answer choices when the start button is clicked -->
