@@ -19,7 +19,8 @@ var timeLeft = 60;
 var finalScore = 0;
 var questionIndex = 0;
 var interval;
-var highScores = [];
+var highScores = JSON.parse(localStorage.getItem("highScores"))  || [];
+
 
 function startQuiz() {
 	// start timer function (need to make this)
@@ -139,7 +140,7 @@ startBtn.addEventListener("click", startQuiz);
 answerList.addEventListener("click", checkAnswer);
 
 submitBtn.addEventListener("click", function(event) {
-  event.preventDefault();
+  //event.preventDefault();
   
   // create user object from submission
   var user = {
