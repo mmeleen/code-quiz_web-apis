@@ -11,7 +11,7 @@ var wrongBadge = document.getElementById("wrong-badge");
 var submitForm = document.getElementById("score-submit");
 var submitBtn = document.getElementById("submit");
 var initialsInput = document.getElementById("initials");
-
+var clearBtn = document.getElementById("clear-btn");
 
 // console.log(startBtn, timerSpan, startTextDiv, gameTextDiv, endTextDiv, questionEl, answerList, scoreSpan, correctBadge, wrongBadge);
 
@@ -136,8 +136,14 @@ function endQuiz() {
 	submitForm.classList.remove("d-none");
 }
 
+// function clearScores() {
+// 	console.log(event.target);
+// 	localStorage.clear();
+// }
+
 startBtn.addEventListener("click", startQuiz);
 answerList.addEventListener("click", checkAnswer);
+// clearBtn.addEventListener("click", clearScores);
 
 submitBtn.addEventListener("click", function(event) {
   //event.preventDefault();
