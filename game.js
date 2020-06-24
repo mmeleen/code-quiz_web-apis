@@ -8,10 +8,11 @@ var answerList = document.getElementById("answer-choices");
 var scoreSpan = document.getElementById("score-span");
 var correctBadge = document.getElementById("correct-badge");
 var wrongBadge = document.getElementById("wrong-badge");
+var submitForm = document.getElementById("score-submit");
 
 // console.log(startBtn, timerSpan, startTextDiv, gameTextDiv, endTextDiv, questionEl, answerList, scoreSpan, correctBadge, wrongBadge);
 
-var timeLeft = 30;
+var timeLeft = 60;
 var finalScore = 0;
 var questionIndex = 0;
 var interval;
@@ -127,6 +128,7 @@ function endQuiz() {
 	gameTextDiv.classList.add("d-none");
 	endTextDiv.classList.remove("d-none");
 	answerList.classList.add("d-none");
+	submitForm.classList.remove("d-none");
 }
 
 startBtn.addEventListener("click", startQuiz);
