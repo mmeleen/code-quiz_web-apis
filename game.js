@@ -1,32 +1,31 @@
-var startBtn = document.querySelector("#start-btn");
-var timerSpan = document.querySelector("#timer");
-var startTextDiv = document.querySelector("#start-text");
-var gameTextDiv = document.querySelector("#game-text");
-var endTextDiv = document.querySelector("#end-text");
-var questionEl = document.querySelector("#question-text");
-var answerList = document.querySelector("#answer-choices");
-var scoreSpan = document.querySelector("#score-span");
-var correctBadge = document.querySelector("#correct-badge");
-var wrongBadge = document.querySelector("#wrong-badge");
+var startBtn = document.getElementById("start-btn");
+var timerSpan = document.getElementById("timer");
+var startTextDiv = document.getElementById("start-text");
+var gameTextDiv = document.getElementById("game-text");
+var endTextDiv = document.getElementById("end-text");
+var questionEl = document.getElementById("question-text");
+var answerList = document.getElementById("answer-choices");
+var scoreSpan = document.getElementById("score-span");
+var correctBadge = document.getElementById("correct-badge");
+var wrongBadge = document.getElementById("wrong-badge");
 
 // console.log(startBtn, timerSpan, startTextDiv, gameTextDiv, endTextDiv, questionEl, answerList, scoreSpan, correctBadge, wrongBadge);
 
-var totalTime = 15;
+var timeLeft = 15;
 var finalScore = 0;
 var questionIndex = 0;
 
 function startQuiz() {
-	console.log("startQuiz", totalTime);
 	// start timer function (need to make this)
   // set text content of timer on DOM
 	// call getQuestion function
 	//startTextDiv.classList.add("d-none");
 	//gameTextDiv.classList.remove("d-none");
-	startTimer(totalTime);
+	startTimer();
 	getQuestion();
 }
 
-function startTimer(timeLeft) {
+function startTimer() {
 
   var interval = setInterval(function() {
 		timeLeft--;
@@ -48,9 +47,14 @@ function getQuestion() {
 	var current = questionArray[questionIndex];
 	questionEl.textContent = current.title;
 	answerList.innerHTML = "";
-	// current.choices.forEach(function(){
-		
-	// });
+	for (i=0; i < current.choices.length; i++){
+		var newButton = document.createElement("button");
+		newButton.setAttribute("class", "choice btn btn-primary my-2");
+		newButton.setAttribute("value", current.choices[i]);
+		newButton.textContent = current.choices[i];
+		answerList.append(newButton);
+	}
+	
 	
 	// update the DOM with the current answer choices
     // for loop that goes through the answer choices
@@ -62,6 +66,15 @@ function getQuestion() {
 }
 
 function checkAnswer() {
+	var element = event.target;
+
+  // If that element is a button...
+  if (element.matches(".choice") === true) {
+		console.log(element.value);
+    // Get its data-index value and remove the todo element from the list
+    var index = element.parentElement.getAttribute("data-index");
+
+  }
 	// if choice value is incorrect
 		// subtract seconds from the timer
 		// display new time to page
@@ -79,3 +92,4 @@ function endQuiz() {
 }
 
 startBtn.addEventListener("click", startQuiz);
+answerList.addEventListener("click", checkAnswer);
