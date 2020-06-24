@@ -148,5 +148,9 @@ submitBtn.addEventListener("click", function(event) {
   };
 
 	console.log(user);
-	
+	highScores.push(user);
+	console.log(highScores);
+
+	// set new submission
+	localStorage.setItem("highScores", JSON.stringify(highScores));
 });
