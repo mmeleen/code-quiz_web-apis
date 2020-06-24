@@ -15,31 +15,26 @@
       </li>
     </ul>
   </nav>
-  <main class="jumbotron my-3 w-75 mx-auto">
+  <main class="jumbotron my-2 w-75 mx-auto">
     <div id="start-text">
-      <h1 class="display-4 mb-4" id="heading">Coding Quiz Time!</h1>
+      <h1 class="display-4 mb-3" id="heading">Coding Quiz Time!</h1>
       <p class="lead" id="intro-text">Answer the following questions before time runs out! You'll receive a time penalty for each incorrect answer. Good luck!</p>
     </div>
-    <div id="game-text">
-      <h1 class="display-4 mb-4" id="timeLine">Time: <span id="timer" class="text-warning">--</span> s</h1>
+    <div id="game-text" class="d-none">
+      <h1 class="display-4 mb-3" id="timeLine">Time: <span id="timer" class="text-warning">30</span> s</h1>
       <p class="lead" id="question-text">Test</p>
     </div>
-    <div id="end-text">
-      <h1 class="display-4 mb-4" id="gameOver">All done!</h1>
-      <p class="lead" id="end-text">Your final score is <span id="score-span" class="text-warning">--</span></p>
+    <div id="end-text" class="d-none">
+      <h1 class="display-4 mb-3" id="gameOver">All done!!</h1>
+      <h3 id="end-text">Final score: <span id="score-span" class="text-warning">--</span></h3>
     </div>
-    <hr class="my-4 bg-success">
-    <ul class="list-group" id="answer-choices">
-      <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
-        Cras justo odio
-        <span class="badge badge-primary badge-pill">14</span>
-      </li> -->
-    </ul>
+    <hr class="my-3 bg-success">
+    <ul class="list-group" id="answer-choices"></ul>
     <p class="lead">
       <a class="btn btn-primary btn-lg" id="start-btn" role="button">Start Quiz</a>
     </p>
-    <h3 id="correct-badge"><span class="badge badge-success">Correct!</span></h3>
-    <h3 id="wrong-badge"><span class="badge badge-danger">WRONG! -10s</span></h3>
+    <h3 id="correct-badge" class="d-none"><span class="badge badge-success">Correct!</span></h3>
+    <h3 id="wrong-badge" class="d-none"><span class="badge badge-danger">WRONG! -10s</span></h3>
 
   </main>
 
