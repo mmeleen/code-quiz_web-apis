@@ -11,7 +11,7 @@ var wrongBadge = document.getElementById("wrong-badge");
 
 // console.log(startBtn, timerSpan, startTextDiv, gameTextDiv, endTextDiv, questionEl, answerList, scoreSpan, correctBadge, wrongBadge);
 
-var timeLeft = 15;
+var timeLeft = 30;
 var finalScore = 0;
 var questionIndex = 0;
 
@@ -31,7 +31,7 @@ function startTimer() {
 		timeLeft--;
 		timerSpan.textContent = timeLeft;
 
-    if (timeLeft === 0) {
+    if (timeLeft <= 0) {
       endQuiz();
       clearInterval(interval);
 		}
@@ -66,14 +66,28 @@ function getQuestion() {
 }
 
 function checkAnswer() {
+	var correctAnswer = questionArray[questionIndex].answer;
+	console.log(correctAnswer);
 	var element = event.target;
 
   // If that element is a button...
   if (element.matches(".choice") === true) {
 		console.log(element.value);
     // Get its data-index value and remove the todo element from the list
-    var index = element.parentElement.getAttribute("data-index");
-
+		console.log();
+		if (element.value === correctAnswer){
+			correctPopUp();
+		} else {
+			wrongPopUp();
+			timeLeft -= 10;
+			timerSpan.textContent = timeLeft;
+		}
+		if (questionIndex < (questionArray.length - 1)){
+			questionIndex++;
+			getQuestion();
+		} else {
+			endQuiz();
+		}
   }
 	// if choice value is incorrect
 		// subtract seconds from the timer
@@ -85,6 +99,14 @@ function checkAnswer() {
 	// check if we've run out of questions
 		// yes - end game
 		// no - get next question
+}
+
+function correctPopUp(){
+
+}
+
+function wrongPopUp(){
+
 }
 
 function endQuiz() {
