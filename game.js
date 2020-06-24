@@ -1,39 +1,58 @@
-var startBtn = document.querySelector("#start");
+var startBtn = document.querySelector("#start-btn");
 var timerSpan = document.querySelector("#timer");
+var startTextDiv = document.querySelector("#start-text");
+var gameTextDiv = document.querySelector("#game-text");
+var endTextDiv = document.querySelector("#end-text");
 var questionEl = document.querySelector("#question-text");
 var answerList = document.querySelector("#answer-choices");
 var scoreSpan = document.querySelector("#score-span");
 var correctBadge = document.querySelector("#correct-badge");
 var wrongBadge = document.querySelector("#wrong-badge");
 
-var secondsLeft = 60;
+// console.log(startBtn, timerSpan, startTextDiv, gameTextDiv, endTextDiv, questionEl, answerList, scoreSpan, correctBadge, wrongBadge);
+
+var totalTime = 15;
 var finalScore = 0;
+var questionIndex = 0;
 
 function startQuiz() {
+	console.log("startQuiz", totalTime);
 	// start timer function (need to make this)
   // set text content of timer on DOM
 	// call getQuestion function
+	//startTextDiv.classList.add("d-none");
+	//gameTextDiv.classList.remove("d-none");
+	startTimer(totalTime);
+	getQuestion();
+}
 
-  // We only want to start the timer if totalSeconds is > 0
-  if (totalSeconds > 0) {
-    /* The "interval" variable here using "setInterval()" begins the recurring increment of the
-       secondsElapsed variable which is used to check if the time is up */
-      interval = setInterval(function() {
-        secondsElapsed++;
+function startTimer(timeLeft) {
 
-        // So renderTime() is called here once every second.
-        renderTime();
-      }, 1000);
-  } else {
-    alert("Minutes of work/rest must be greater than 0.")
-  }
+  var interval = setInterval(function() {
+		timeLeft--;
+		timerSpan.textContent = timeLeft;
+
+    if (timeLeft === 0) {
+      endQuiz();
+      clearInterval(interval);
+		}
+  }, 1000);
+
 }
 
 function getQuestion() {
+	console.log("getQuestion");
 	// get the question/answer object from your questions array based on the current question index
 	// update the DOM with the current question
-  // clear out any old question choices  
-  // update the DOM with the current answer choices
+	// clear out any old question choices
+	var current = questionArray[questionIndex];
+	questionEl.textContent = current.title;
+	answerList.innerHTML = "";
+	// current.choices.forEach(function(){
+		
+	// });
+	
+	// update the DOM with the current answer choices
     // for loop that goes through the answer choices
       // creates a button
       // set a class attribute of "choice"
@@ -54,3 +73,9 @@ function checkAnswer() {
 		// yes - end game
 		// no - get next question
 }
+
+function endQuiz() {
+	console.log("endQuiz");
+}
+
+startBtn.addEventListener("click", startQuiz);
