@@ -39,7 +39,7 @@ function startTimer() {
 		timeLeft--;
 		timerSpan.textContent = timeLeft;
 
-    if (timeLeft === 0) {
+    if (timeLeft <= 0) {
 			endQuiz();
 		}
   }, 1000);
