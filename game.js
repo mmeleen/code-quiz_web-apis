@@ -86,7 +86,7 @@ function checkAnswer() {
 			correctPopUp();
 		} else {
 			wrongPopUp();
-			timeLeft -= 10;
+			timeLeft -= 5;
 			timerSpan.textContent = timeLeft;
 		}
 		if (questionIndex < (questionArray.length - 1)){
