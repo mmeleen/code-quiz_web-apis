@@ -35,7 +35,7 @@ var questionArray = [
 	{
 		title: "How do you declare a JavaScript variable?",
 		choices: ["A. var carName", "B. v carName", "C. variable carName", "D. var: carName"],
-		answer: "C. var carName"
+		answer: "A. var carName"
 	},
 	{
 		title: "How do you write an IF statement in JavaScript?",
@@ -54,7 +54,7 @@ var questionArray = [
 	},
 	{
 		title: "How do you find the largest of the numbers (x, y, z)?",
-		choices: ["A. Math.ceil(x,y)", "B. top(x,y,z)", "C. ceil(x,y,z)", "D. Math.max(x,y,z)"],
+		choices: ["A. Math.ceil(x,y,z)", "B. top(x,y,z)", "C. ceil(x,y,z)", "D. Math.max(x,y,z)"],
 		answer: "D. Math.max(x,y,z)"
 	},
 	{
