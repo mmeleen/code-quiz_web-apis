@@ -10,7 +10,8 @@ retrievedHighscores.sort(function(a,b){
 })
 
 for(var i = 0; i < retrievedHighscores.length; i++){
-  var highscoreDiv = document.createElement("div");
+  var highscoreDiv = document.createElement("li");
+  highscoreDiv.classList.add("list-group-item")
   highscoreDiv.textContent = retrievedHighscores[i].initials + " - " + retrievedHighscores[i].score;
   console.log(document.getElementById("highscore-container"));
   document.getElementById("highscore-container").append(highscoreDiv);
