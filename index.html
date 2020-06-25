@@ -8,14 +8,17 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <!-- Navbar w/ link to high score page -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-          <a class="nav-link" href="./highscore.html">View Highscores</a>
+          <a class="nav-link" href="./highscore.html">View High Scores</a>
       </li>
     </ul>
   </nav>
+  <!-- Main jumbotron -->
   <main class="jumbotron my-2 w-75 mx-auto">
+    <!-- Starting text div (starts out visible) -->
     <div id="start-text">
       <h1 class="display-4 text-success mb-3" id="heading">JavaScript Quiz Time!</h1>
       <div class="lead" id="intro-text">
@@ -24,21 +27,27 @@
         <p>Good luck!</p>
       </div>
     </div>
+    <!-- Game text div (hidden until start button pressed) -->
     <div id="game-text" class="d-none">
       <h1 class="display-4 mb-3" id="timeLine">Time: <span id="timer" class="text-warning">60</span> s</h1>
       <p class="lead" id="question-text"></p>
     </div>
+    <!-- End text div (hidden until end of quiz) -->
     <div id="end-text" class="d-none">
       <h1 class="display-4 mb-3" id="gameOver">All done!</h1>
       <h3>Final score: <span id="score-span" class="text-warning">--</span></h3>
     </div>
     <hr class="my-3 bg-success">
+    <!-- Empty list to be populated by answer choices -->
     <ul class="list-group" id="answer-choices"></ul>
+    <!-- Quiz start button -->
     <p class="lead">
       <a class="btn btn-primary btn-lg" id="start-btn" role="button">Start Quiz</a>
     </p>
+    <!-- Correct/Incorrect badges (hidden, appear briefly depending on answer) -->
     <h3 id="correct-badge" class="d-none"><span class="badge badge-success">Correct!</span></h3>
-    <h3 id="wrong-badge" class="d-none"><span class="badge badge-danger">WRONG! -10s</span></h3>
+    <h3 id="wrong-badge" class="d-none"><span class="badge badge-danger">WRONG! -5s</span></h3>
+    <!-- Score submit form w/ input field for initials-->
     <form id="score-submit" class="d-none form-inline">
       <div class="form-row my-3">
         <div class= "col-auto">
@@ -53,9 +62,9 @@
       </div>
     </form>
   </main>
-
-    <script src="./questions.js"></script>
-    <script src="./game.js"></script>
-    <script src="./score.js"></script>
+  <!-- Scripts -->
+  <script src="./questions.js"></script>
+  <script src="./game.js"></script>
+  <script src="./score.js"></script>
 </body>
 </html>
