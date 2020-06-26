@@ -1,6 +1,9 @@
 # code-quiz_web-apis
 Task is to build a timed multiple-choice code quiz. App will run in the browser and feature dynamically updated HTML and CSS powered by JS code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
 
+# Link to Deployed Project
+https://mmeleen.github.io/code-quiz_web-apis/
+
 ## User Story
 
 ```
@@ -23,4 +26,4 @@ WHEN all questions are answered or the timer reaches 0
 THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
-```
+``` 
