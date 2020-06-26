@@ -1,3 +1,5 @@
+// Variable declaration
+
 var startBtn = document.getElementById("start-btn");
 var timerSpan = document.getElementById("timer");
 var startTextDiv = document.getElementById("start-text");
@@ -13,32 +15,34 @@ var submitBtn = document.getElementById("submit");
 var initialsInput = document.getElementById("initials");
 var clearBtn = document.getElementById("clear-btn");
 
-// console.log(startBtn, timerSpan, startTextDiv, gameTextDiv, endTextDiv, questionEl, answerList, scoreSpan, correctBadge, wrongBadge);
-
 var timeLeft = 60;
 var finalScore = 0;
 var questionIndex = 0;
 var interval;
+
+// Create blank high scores array or retrieve from local storage
 var highScores = JSON.parse(localStorage.getItem("highScores"))  || [];
 
-
+// Start quiz function
 function startQuiz() {
-	// start timer function (need to make this)
-  // set text content of timer on DOM
-	// call getQuestion function
+	// Hide starting elements
 	startTextDiv.classList.add("d-none");
-	gameTextDiv.classList.remove("d-none");
 	startBtn.classList.add("d-none");
+	// Show quiz elements
+	gameTextDiv.classList.remove("d-none");
+	// Start timer
 	startTimer();
+	// Get first question
 	getQuestion();
 }
 
+// Start timer function
 function startTimer() {
-
+	// Timer counts down
   interval = setInterval(function() {
 		timeLeft--;
 		timerSpan.textContent = timeLeft;
-
+		// End quiz when time runs out
     if (timeLeft <= 0) {
 			endQuiz();
 		}
@@ -46,14 +50,14 @@ function startTimer() {
 
 }
 
+// Get question function
 function getQuestion() {
-	console.log("getQuestion");
-	// get the question/answer object from your questions array based on the current question index
-	// update the DOM with the current question
-	// clear out any old question choices
+	// Get and display current question from question array
 	var current = questionArray[questionIndex];
 	questionEl.textContent = current.title;
+	// Clear previous answers
 	answerList.innerHTML = "";
+	// Generate answer choice buttons
 	for (i=0; i < current.choices.length; i++){
 		var newButton = document.createElement("button");
 		newButton.setAttribute("class", "choice btn btn-primary my-2");
@@ -61,34 +65,28 @@ function getQuestion() {
 		newButton.textContent = current.choices[i];
 		answerList.append(newButton);
 	}
-	
-	
-	// update the DOM with the current answer choices
-    // for loop that goes through the answer choices
-      // creates a button
-      // set a class attribute of "choice"
-      // set a value attribute of choice
-      // set text content of button to be choice
-      // append button to the DOM
 }
 
+// Check answer function
 function checkAnswer() {
+	// Get correct answer from question array
 	var correctAnswer = questionArray[questionIndex].answer;
 	console.log(correctAnswer);
+	// Get clicked element
 	var element = event.target;
-
-  // If that element is a button...
+	console.log(element.value);
+	// Check if clicked element was an answer choice
   if (element.matches(".choice") === true) {
-		console.log(element.value);
-    // Get its data-index value and remove the todo element from the list
-		console.log();
+		// If correct, trigger correct badge popup
 		if (element.value === correctAnswer){
 			correctPopUp();
 		} else {
+			// If wrong, trigger wrong badge popup and impose time penalty
 			wrongPopUp();
 			timeLeft -= 5;
 			timerSpan.textContent = timeLeft;
 		}
+		// Get next question if more remain, otherwise end quiz
 		if (questionIndex < (questionArray.length - 1)){
 			questionIndex++;
 			getQuestion();
@@ -96,25 +94,16 @@ function checkAnswer() {
 			endQuiz();
 		}
   }
-	// if choice value is incorrect
-		// subtract seconds from the timer
-		// display new time to page
-		// let player know they are incorrect
-	// else 
-		// let the player know they're correct
-
-	// check if we've run out of questions
-		// yes - end game
-		// no - get next question
 }
 
+// Function to temporarily display "Correct" badge 
 function correctPopUp(){
 	correctBadge.classList.remove("d-none");
 	var fade = setTimeout(function(){
 		correctBadge.classList.add("d-none");
 	}, 750);
 }
-
+// Function to temporarily display "Wrong" badge 
 function wrongPopUp(){
 	wrongBadge.classList.remove("d-none");
 	var fade = setTimeout(function(){
@@ -122,13 +111,17 @@ function wrongPopUp(){
 	}, 750);
 }
 
+// End quiz function
 function endQuiz() {
+	// Stop timer
 	clearInterval(interval);
+	// If time ran out, score is zero
 	if (timeLeft < 0) {
 		finalScore = 0;
 	} else {
 		finalScore = timeLeft;
 	}
+	// Show post-quiz elements, hide quiz elements
 	scoreSpan.textContent = finalScore;
 	gameTextDiv.classList.add("d-none");
 	endTextDiv.classList.remove("d-none");
@@ -136,28 +129,24 @@ function endQuiz() {
 	submitForm.classList.remove("d-none");
 }
 
-// function clearScores() {
-// 	console.log(event.target);
-// 	localStorage.clear();
-// }
-
+// Event listeners for start and answer buttons 
 startBtn.addEventListener("click", startQuiz);
 answerList.addEventListener("click", checkAnswer);
-// clearBtn.addEventListener("click", clearScores);
 
+// Submit button listener and function
 submitBtn.addEventListener("click", function(event) {
-  //event.preventDefault();
   
-  // create user object from submission
+  // Create user object from submission
   var user = {
     initials: initialsInput.value.trim(),
     score: finalScore
   };
-
 	console.log(user);
+
+	// Add user object to high scores array
 	highScores.push(user);
 	console.log(highScores);
 
-	// set new submission
+	// Save high scores array to local storage
 	localStorage.setItem("highScores", JSON.stringify(highScores));
 });
