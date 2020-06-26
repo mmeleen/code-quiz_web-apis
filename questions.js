@@ -6,7 +6,7 @@ var questionArray = [
 		answer: "B. <script>"
 	},
 	{
-		title: "Where is the correct place to insert a JavaScript?",
+		title: "Where is the correct place to insert your JavaScript code?",
 		choices: ["A. The <head> section", "B. The <body> section", "C. Either the <head> or <body>", "D. Outside of the <head> or <body>, but within the <html> tags"],
 		answer: "C. Either the <head> or <body>"
 	},
